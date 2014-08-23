@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    
+    <div class="row">
+
+      <div class="col-md-6">
+    <div class="page-header">
+        <h4>Ajouter une faculté</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-fac',true); ?>">
+      
+          
+      <div class="form-group">
+          <label for="email">nom : </label> 
+          <textarea type="text" class="form-control input-sm" name="desc"  required></textarea>
+      </div>
+      
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+    </div>
+
+    <div class="col-md-6">
+      <div class="page-header">
+        <h4>Publier une annonce pour toutes les facultés</h4>
+    </div>
+      <form role="form" method="POST" action="<?php echo $this->url(array(),'add-annonce-allfac',true); ?>">
+      
+      <div class="form-group">
+          <label for="email">annonce : </label> 
+          <textarea type="text" class="form-control input-sm" name="desc"  required></textarea>
+
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+    </div>
+
+    </div>
+
+  <div class="page-header">
+    <h4>Vos facultés</h4>
+  </div>
+
+<div class="row">
+  <?php foreach ($this->facs as $key => $value): ?>
+    
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h5>
+            <a href="<?php echo $this->url(array('nomfac'=>urlencode($value->getDescription()),'code'=>$value->getCode()),'viewfac',true); ?>">
+            <?php echo $value->getDescription(); ?>
+              
+            </a>
+          </h5>
+          <span class="text-info"><?php echo $value->getEtudiants()->count(); ?> etudiants</span><br>
+                <span class="text-info"><?php echo $value->getPromotions()->count(); ?> promotions</span>
+        </div>
+      </div>
+    </div>
+    
+  <?php endforeach ?>
+</div>
+  
+   
+</div>

@@ -1,0 +1,62 @@
+<div class="jumbotron">
+  
+    <div class="page-header">
+        <h4>Ajouter un établissement</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-ets',true); ?>">
+      
+      <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                  <label for="email">Email : </label> 
+                  <input type="email" class="form-control input-sm" name="email" id="inputEmail" placeholder="email de l'etablissement" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="nom">Nom : </label> 
+                  <input type="text" class="form-control input-sm" name="nom" id="inputEmail" placeholder="nom de l'etablissement" required>
+              </div>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <div class="form-group">
+                  <label for="cigle">Cigle : </label> 
+                  <input type="text" class="form-control input-sm" name="cigle" id="inputEmail" placeholder="cigle de l'etablissement" required>
+              </div>
+
+              <div class="form-group">
+                  <label for="tel">Tél : </label> 
+                  <input type="text" class="form-control input-sm" name="tel" id="inputEmail" placeholder="cigle de l'etablissement" required>
+              </div>
+          </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+    </form>
+
+
+  <div class="page-header">
+    <h4>Résumé des etablissements</h4>
+  </div>
+
+<div class="row">
+  <?php foreach ($this->etabs as $key => $value): ?>
+    
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h5><?php echo $value->getNom(); ?></h5>
+          <span class="text-info"><?php echo $value->getEtudiants()->count(); ?> etudiants</span><br>
+                <span class="text-info"><?php echo $value->getFacultes()->count(); ?> facultés</span>
+        </div>
+      </div>
+    </div>
+    
+  <?php endforeach ?>
+</div>
+  
+   
+</div>

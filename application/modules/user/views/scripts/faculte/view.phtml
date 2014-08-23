@@ -1,0 +1,67 @@
+<div class="jumbotron">
+  
+    <div class="page-header">
+        <h4>Ajouter une promotion</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-prom',true); ?>">
+      
+          
+      <div class="form-group">
+          <label for="email">attr : </label> 
+          <input type="text" class="form-control input-sm" name="attr"  required>
+      </div>
+
+      <div class="form-group">
+          <label for="email">niveau : </label> 
+          <input type="text" class="form-control input-sm" name="level"  required>
+      </div>
+
+      <input type="hidden" name="facode" value="<?php echo $this->fac->getCode() ?>">
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-annonce-fac',true); ?>">
+      
+      <div class="form-group">
+          <label for="email">annonce faculte : </label> 
+          <textarea type="text" class="form-control input-sm" name="desc"  required></textarea>
+          <input type="hidden" name="facid" value="<?php echo $this->fac->getId(); ?>">
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+
+  <div class="page-header">
+    <h4>Les promotions de la faculté de <?php echo $this->fac->getDescription(); ?></h4>
+  </div>
+
+<div class="row">
+  <?php foreach ($this->fac->getPromotions() as $key => $value): ?>
+    
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h5>
+            <a href="<?php echo $this->url(array('nomfac'=>urlencode($this->fac->getDescription()),'nomprom'=>urlencode($value->getLevel().$value->getAttr()),'code'=>$value->getCode(),'idprom'=>$value->getId()),'viewprom',true); ?>">
+            <?php echo $value->getLevel().' '.$value->getAttr(); ?>
+              
+            </a>
+          </h5>
+          <span class="text-info"><?php echo $value->getEtudiants()->count(); ?> etudiants</span><br>
+
+          <span class="text-info"><?php echo $value->getAnnees()->count(); ?> annees</span><br>
+
+        </div>
+      </div>
+    </div>
+    
+  <?php endforeach ?>
+</div>
+  
+   
+</div>

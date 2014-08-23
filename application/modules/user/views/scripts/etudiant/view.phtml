@@ -1,0 +1,69 @@
+<div class="jumbotron">
+    
+    <div class="row">
+
+      <div class="col-md-6">
+    <div class="page-header">
+        <h4>Ajouter une note</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-note',true); ?>">
+      
+          
+      <div class="form-group">
+          <label for="email">periode : </label> 
+          <textarea type="text" class="form-control input-sm" name="periode"  required></textarea>
+      </div>
+
+      <div class="form-group">
+          <label for="email">la note : </label> 
+          <textarea type="text" class="form-control input-sm" name="lanote"  required></textarea>
+      </div>
+      <input type="hidden" value="<?php echo $this->etudiant->getId(); ?>" name="idetu">
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+    </div>
+
+    </div>
+
+  <div class="page-header">
+    <h4>Vos notes</h4>
+  </div>
+
+<div class="row">
+  <?php foreach ($this->etudiant->getNotes() as $key => $value): ?>
+    
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h5>
+            <a href="">
+            <?php echo $value->getLanote(); ?>
+              
+            </a>
+          </h5>
+          <span class="text-info"><?php echo $value->getPeriode(); ?></span><br>
+               
+        </div>
+      </div>
+    </div>
+    
+  <?php endforeach ?>
+</div>
+  
+   <form role="form" method="POST" action="<?php echo $this->url(array(),'add-annonce-etu',true); ?>">
+      
+      <div class="form-group">
+          <label for="email">annonce etudiant : </label> 
+          <textarea type="text" class="form-control input-sm" name="desc"  required></textarea>
+          <input type="hidden" name="etuid" value="<?php echo $this->etudiant->getId(); ?>">
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+</div>

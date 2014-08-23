@@ -1,0 +1,63 @@
+<div class="jumbotron">
+	
+	<div class="page-header">
+        <h4>Ajouter une annee</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-year',true); ?>">
+      
+          
+      <div class="form-group">
+          <label for="email">periode : </label> 
+          <input type="text" class="form-control input-sm" name="periode"  required>
+      </div>
+
+      <input type="hidden" name="promid" value="<?php echo $this->prom->getId() ?>">
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-annonce-prom',true); ?>">
+      
+      <div class="form-group">
+          <label for="email">annonce promotion : </label> 
+          <textarea type="text" class="form-control input-sm" name="desc"  required></textarea>
+          <input type="hidden" name="promid" value="<?php echo $this->prom->getId(); ?>">
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+	<div class="row">
+	<h4>ANNEES</h4>
+	<?php foreach ($this->anns as $key => $value): ?>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<div class="caption">
+				  <h5>
+				    <a href="<?php 
+				    echo $this->url(
+				    	array(
+
+				    		'nomfac'=>urlencode($value->getFaculte()->getDescription()),
+				    		'nomprom'=>urlencode($value->getPromotion()->getLevel().$value->getPromotion()->getAttr()),
+				    		'annper'=>$value->getPeriode(),
+				    		'code'=>$value->getCode(),
+				    		'idann'=>$value->getId()),
+
+				    	'viewyear',true); 
+				    ?>">
+				    <?php echo $value->getPeriode(); ?>
+				    </a>
+				  </h5>
+				  <span class="text-info"><?php echo $value->getEtudiants()->count(); ?> etudiants</span><br>
+				        
+				</div>
+			</div>
+	    </div>
+	<?php endforeach ?>
+	</div>
+
+</div>

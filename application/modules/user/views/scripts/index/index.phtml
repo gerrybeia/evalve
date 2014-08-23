@@ -1,0 +1,47 @@
+<div class="jumbotron">
+  
+  <div class="page-header">
+    <h4>Résumé de votre établissement</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <div class="caption">
+                <h5>Facultés</h5>
+                <span class="label label-info"><?php echo $this->userConn->getFacultes()->count(); ?></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <div class="caption">
+                <h5>Etudiants</h5>
+                <span class="label label-info"><?php echo $this->userConn->getEtudiants()->count(); ?></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <div class="caption">
+                <h5>Notes</h5>
+                <span class="label label-info">12</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="thumbnail">
+            <div class="caption">
+                <h5>Annonces</h5>
+                <span class="label label-info">12</span>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+</div>

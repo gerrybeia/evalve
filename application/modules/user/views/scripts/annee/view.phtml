@@ -1,0 +1,68 @@
+<div class="jumbotron">
+	
+	<div class="page-header">
+        <h4>Ajouter un etudiant</h4>
+    </div>
+
+    <form role="form" method="POST" action="<?php echo $this->url(array(),'add-etu',true); ?>">
+      
+          
+      <div class="form-group">
+          <label for="email">Email : </label> 
+          <input type="email" class="form-control input-sm" name="email"  required>
+      </div>
+
+      <div class="form-group">
+          <label for="email">Nom : </label> 
+          <input type="text" class="form-control input-sm" name="nom"  required>
+      </div>
+
+      <div class="form-group">
+          <label for="email">Prenom : </label> 
+          <input type="text" class="form-control input-sm" name="prenom"  required>
+      </div>
+
+      <div class="form-group">
+          <label for="email">Tel : </label> 
+          <input type="text" class="form-control input-sm" name="tel"  required>
+      </div>
+
+      <input type="hidden" name="annid" value="<?php echo $this->ann->getId() ?>">
+      
+      <button type="submit" class="btn btn-primary btn-sm">ajouter</button> 
+
+    </form>
+
+	<div class="row">
+	<h4>Etudiants</h4>
+	<?php foreach ($this->etds as $key => $value): ?>
+		<div class="col-md-3">
+			<div class="thumbnail">
+				<div class="caption">
+				  <h5>
+				    <a href="
+            <?php 
+            echo $this->url(
+              array(
+
+                'nomfac'=>urlencode($value->getFaculte()->getDescription()),
+                'nomprom'=>urlencode($value->getPromotion()->getLevel().$value->getPromotion()->getAttr()),
+                'annper'=>$value->getAnnee()->getPeriode(),
+                'nometu'=>$value->getNom().$value->getPrenom(),
+                'code'=>$value->getCode(),
+                'idetu'=>$value->getId()),
+
+              'viewetu',true); 
+            ?>">
+				    <?php echo $value->getNom(); ?>
+				    </a>
+				  </h5>
+				  <span class="text-info"><?php echo $value->getNotes()->count(); ?> notes</span><br>
+				        
+				</div>
+			</div>
+	    </div>
+	<?php endforeach ?>
+	</div>
+
+</div>

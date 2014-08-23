@@ -1,0 +1,83 @@
+<?php echo $this->doctype(); ?> 
+
+<html>
+    
+<head>
+    
+<meta charset="utf-8" />
+<title><?php echo $this->titre; ?></title>
+
+<?php  
+echo $this->cScript('bootstrap.css');
+echo $this->cScript('sheet.css');
+?>
+    
+</head>
+
+<body>
+
+<div class="container contadmin">
+
+
+
+<div class="row navAdmin">
+
+<div class="col-md-12">
+<p class="pull-right text-success">
+  Bienvenue <?php echo $this->userSession->userNom; ?>
+  <a class="text-danger" href="<?php echo $this->url(array(),'logout-user',true); ?>">deconnexion</a>
+</p>
+</div>
+
+<div class="col-md-2"><h4><b>e-valve</b></h4></div>
+
+<div class="col-md-10">
+<nav>
+<ul class="nav nav-pills navbar-right">
+
+  <li <?php if($this->pageCur == 'res') echo 'class="active"'; ?>>
+    <a id="menuitem" href="<?php echo $this->url(array(),'resume',true); ?>">
+      RESUME
+    </a>
+  </li>
+
+  <li <?php if($this->pageCur == 'fac') echo 'class="active"'; ?>>
+    <a id="menuitem" href="<?php echo $this->url(array(),'facultes',true); ?>">
+      ETUDIANTS
+    </a>
+  </li>
+
+  <li <?php if($this->pageCur == 'ann') echo 'class="active"'; ?>>
+    <a id="menuitem" href="">
+      ANNONCES
+    </a>
+  </li>
+  
+</ul>
+</nav>
+</div>
+
+
+</div>
+
+<?php echo $this->showMessages(); ?>
+
+<?php echo $this->layout()->content; ?>
+
+<footer>
+	<p><small>A <a href="http://www.kavarilabel.com">kavarilabel</a>'s product. Built by <a href="http://www.gerrybeia.com">schieben</a>.</small></p>
+</footer>
+
+
+</div>
+
+
+
+<?php  
+echo $this->jaScript('bootstrap.min.js');
+echo $this->jaScript('jquery.js');
+?>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+.contlogin{
+	margin-top: 100px;
+	width: 400px;
+}
+.h4login{
+	text-decoration: underline;
+	line-height: 50px;
+}
+.jumblogin{
+	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+ 	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.jumblogin, footer{
+	background: -webkit-linear-gradient(135deg,rgba(136,255,217,0.7),rgba(234,129,90,0.7)); /*Safari 5.1-6*/
+	background: -o-linear-gradient(135deg,rgba(136,255,217,0.7),rgba(234,129,90,0.7)); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(135deg,rgba(136,255,217,0.7),rgba(234,129,90,0.7)); /*Fx 3.6-15*/
+	background: linear-gradient(to 135deg, rgba(136,255,217,0.7), rgba(234,129,90,0.7)); /*Standard*/
+}
+
+.contadmin{
+	margin-top: 80px;
+	width: 800px;
+}
+.navAdmin{
+	margin: 10px;
+}
+
+footer{
+	text-align: center;
+}
+footer a{
+	color: #000;
+}
+
